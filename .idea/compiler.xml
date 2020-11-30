@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="itheima_spring_ioc" />
         <module name="itheima_spring_aop" />
+        <module name="mavenDemo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="itheima_spring_aop" target="1.5" />
       <module name="itheima_spring_ioc" target="1.5" />
+      <module name="mavenDemo" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
