@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/itheima_spring_ioc/itheima_spring_ioc.iml" filepath="$PROJECT_DIR$/itheima_spring_ioc/itheima_spring_ioc.iml" />
       <module fileurl="file://$PROJECT_DIR$/mavenDemo/mavenDemo.iml" filepath="$PROJECT_DIR$/mavenDemo/mavenDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/spring_study.iml" filepath="$PROJECT_DIR$/.idea/spring_study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssmweb/ssmweb.iml" filepath="$PROJECT_DIR$/ssmweb/ssmweb.iml" />
     </modules>
   </component>
 </project>
