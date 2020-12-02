@@ -14,7 +14,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="itheima_spring_aop" target="1.5" />
-      <module name="itheima_spring_ioc" target="1.5" />
+      <module name="itheima_spring_ioc" target="6" />
       <module name="mavenDemo" target="1.5" />
       <module name="ssmweb" target="1.8" />
     </bytecodeTargetLevel>
