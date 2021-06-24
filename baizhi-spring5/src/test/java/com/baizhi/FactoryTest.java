@@ -5,6 +5,8 @@ import com.baizhi.basic.Person;
 import com.baizhi.basic.User;
 import com.baizhi.basic.UserService;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class FactoryTest {
 
@@ -29,5 +31,13 @@ public class FactoryTest {
     public void testPerson() {
         Person person = (Person) BeanFactory.getBean("person");
         System.out.println(person);
+    }
+
+    @Test
+    public void testSpring1() {
+        //1 获得Spring工厂
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        //2 通过工厂类获得对象
+        Person person = ctx.getBean("person", Person.class);
     }
 }
