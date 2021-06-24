@@ -3,7 +3,7 @@ package com.baizhi.basic;
 public class UserServiceImpl implements UserService{
 
     //private UserDAO userDAO = new UserDAOImpl();
-    private UserDAO userDAO = SimpleBeanFactory.getUserDAO();
+    private UserDAO userDAO = (UserDAO) BeanFactory.getBean("userDAO");
 
     @Override
     public void register(User user) {

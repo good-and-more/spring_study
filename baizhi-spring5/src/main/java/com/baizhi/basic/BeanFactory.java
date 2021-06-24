@@ -3,14 +3,14 @@ package com.baizhi.basic;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class SimpleBeanFactory {
+public class BeanFactory {
 
     private static Properties env = new Properties();
 
     static {
         try {
             //第一步 获得IO输入流
-            InputStream inputStream = SimpleBeanFactory.class.getResourceAsStream("/applicationContext.properties");
+            InputStream inputStream = BeanFactory.class.getResourceAsStream("/applicationContext.properties");
             //第二步 文件内容封装到env集合中
             env.load(inputStream);
 
@@ -46,5 +46,16 @@ public class SimpleBeanFactory {
             e.printStackTrace();
         }
         return  userDAO;
+    }
+
+    public static Object getBean(String key) {
+        Object obj = null;
+        try {
+            Class<?> clazz = Class.forName(env.getProperty(key));
+            obj = clazz.newInstance();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return obj;
     }
 }
