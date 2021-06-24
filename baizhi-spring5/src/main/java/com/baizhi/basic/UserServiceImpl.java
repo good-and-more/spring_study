@@ -1,13 +1,17 @@
 package com.baizhi.basic;
 
 public class UserServiceImpl implements UserService{
+
+    //private UserDAO userDAO = new UserDAOImpl();
+    private UserDAO userDAO = SimpleBeanFactory.getUserDAO();
+
     @Override
     public void register(User user) {
-        System.out.println("register success, " + user.getUsername() + " and " + user.getPassword());
+        userDAO.save(user);
     }
 
     @Override
     public void login(String username, String password) {
-        System.out.println("login success, " + username + " and " + password);
+        userDAO.queryUserByNameAndPassword(username, password);
     }
 }
