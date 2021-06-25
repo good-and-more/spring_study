@@ -3,7 +3,14 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 <!--    id必须是唯一的,class必须是全限定名,这就相当于properties文件-->
-    <bean name="p,q,jjj" class="com.baizhi.basic.Person" />
-    <bean id="person1" class="com.baizhi.basic.Person" />
-    <bean id="userService" class="com.baizhi.basic.UserServiceImpl" />
+<!--    <bean name="p,q,jjj" class="com.baizhi.basic.Person" />-->
+    <bean id="person" class="com.baizhi.basic.Person">
+        <property name="id">
+            <value>11</value>
+        </property>
+        <property name="name">
+            <value>suns</value>
+        </property>
+    </bean>
+<!--    <bean id="userService" class="com.baizhi.basic.UserServiceImpl" />-->
 </beans>

@@ -72,4 +72,13 @@ public class FactoryTest<test> {
         Person p = (Person) ctx.getBean("jjj");
         System.out.println(p);
     }
+
+    @Test
+    void test7() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        Person p = ctx.getBean("person", Person.class);
+        //p.setId(1);
+        //p.setName("suns");
+        System.out.println(p);
+    }
 }
