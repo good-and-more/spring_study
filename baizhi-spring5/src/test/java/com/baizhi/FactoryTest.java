@@ -1,6 +1,7 @@
 package com.baizhi;
 
 import com.baizhi.basic.*;
+import com.baizhi.beanpost.Categroy;
 import com.baizhi.life.Product;
 import com.baizhi.scope.Account;
 import org.junit.jupiter.api.Test;
@@ -199,5 +200,15 @@ public class FactoryTest<test> {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContextConverter.xml");
         com.baizhi.converter.Person person = ctx.getBean("person", com.baizhi.converter.Person.class);
         System.out.println("person birthday = " + person.getBirthday());
+    }
+
+    /**
+     * 用于测试:Bean处理器
+     */
+    @Test
+    void test19() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContextBeanPost.xml");
+        Categroy categroy = (Categroy) ctx.getBean("categroy");
+        System.out.println(categroy.getName());
     }
 }
