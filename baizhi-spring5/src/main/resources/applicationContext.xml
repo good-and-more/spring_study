@@ -46,18 +46,19 @@
         </property>
     </bean>
     <bean id="userDAO" class="com.baizhi.basic.UserDAOImpl" />
-    <bean id="customer" class="com.baizhi.basic.Customer">
+    <bean id="customer" class="com.baizhi.basic.Customer" lazy-init="true" >
         <constructor-arg value="37" type="int"/>
     </bean>
-    <bean id="connection" class="com.baizhi.factorybean.ConnectionFactoryBean">
-        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://192.168.220.128:3306/demo?serverTimezone=Asia/Shanghai" />
-        <property name="username" value="root" />
-        <property name="password" value="root" />
-    </bean>
+<!--    <bean id="connection" class="com.baizhi.factorybean.ConnectionFactoryBean">-->
+<!--        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />-->
+<!--        <property name="url" value="jdbc:mysql://192.168.220.128:3306/demo?serverTimezone=Asia/Shanghai" />-->
+<!--        <property name="username" value="root" />-->
+<!--        <property name="password" value="root" />-->
+<!--    </bean>-->
     <bean id="connFactory" class="com.baizhi.factorybean.ConnectionFactory" />
     <bean id="conn" factory-bean="connFactory" factory-method="getConnection" />
 
     <bean id="staticConn" class="com.baizhi.factorybean.StaticConnectionFactory" factory-method="getConnection" />
     <bean id="account" class="com.baizhi.scope.Account" scope="prototype" />
+    <bean id="product" class="com.baizhi.life.Product" init-method="myInit" p:name="suns" destroy-method="myDestory"/>
 </beans>

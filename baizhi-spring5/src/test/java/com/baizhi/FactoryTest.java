@@ -1,6 +1,7 @@
 package com.baizhi;
 
 import com.baizhi.basic.*;
+import com.baizhi.life.Product;
 import com.baizhi.scope.Account;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
@@ -139,11 +140,11 @@ public class FactoryTest<test> {
     }
 
     /**
-     * 用于测试FactoryBea接口
+     * 用于测试FactoryBea接口,后来又测试了配置文件参数化
      */
     @Test
     void test12() {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContextDb.xml");
         Connection connection = ctx.getBean("connection", Connection.class);
         System.out.println(connection);
     }
@@ -178,5 +179,15 @@ public class FactoryTest<test> {
         Account account2 = ctx.getBean("account", Account.class);
         System.out.println("account1 = " + account1);
         System.out.println("account2 = " + account2);
+    }
+
+    /**
+     * 用于测试生命周期:对象初始化方法
+     */
+    @Test
+    void test17() {
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        Product product = ctx.getBean("product", Product.class);
+        ctx.close();
     }
 }
