@@ -1,16 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 <!--    id必须是唯一的,class必须是全限定名,这就相当于properties文件-->
 <!--    <bean name="p,q,jjj" class="com.baizhi.basic.Person" />-->
-    <bean id="person" class="com.baizhi.basic.Person">
-        <property name="id">
-            <value>11</value>
+    <bean id="person" class="com.baizhi.basic.Person" p:id="12" p:name="ssss" >
+        <property name="strs">
+            <list>
+                <value>123</value>
+                <value>456</value>
+                <value>789</value>
+            </list>
         </property>
-        <property name="name">
-            <value>suns</value>
+        <property name="phones">
+            <set>
+                <value>suns</value>
+                <value>suns123</value>
+                <value>suns123</value>
+                <value>suns456</value>
+            </set>
+        </property>
+        <property name="maps">
+            <map>
+                <entry key="woshishui1" value="pikaqiu"/>
+                <entry key="woshishui2" value="yibu"/>
+                <entry key="woshishui3" value="dayanshe"/>
+            </map>
+        </property>
+        <property name="lists">
+            <list>
+                <value>xiaozhi</value>
+                <value>xiaogang</value>
+                <value>xiaoxia</value>
+            </list>
+        </property>
+        <property name="props">
+            <props>
+                <prop key="huojiandui">wuzang</prop>
+                <prop key="huojiandui">xiaocilang</prop>
+                <prop key="huojiandui">miaomiao</prop>
+            </props>
+        </property>
+        <property name="userService">
+            <bean class="com.baizhi.basic.UserServiceImpl" p:userDAO-ref="userDAO" />
         </property>
     </bean>
-<!--    <bean id="userService" class="com.baizhi.basic.UserServiceImpl" />-->
+    <bean id="userDAO" class="com.baizhi.basic.UserDAOImpl" />
+    <bean id="customer" class="com.baizhi.basic.Customer">
+        <constructor-arg value="37" type="int"/>
+    </bean>
+    <bean id="connection" class="com.baizhi.factorybean.ConnectionFactoryBean">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://192.168.220.128:3306/demo?serverTimezone=Asia/Shanghai" />
+        <property name="username" value="root" />
+        <property name="password" value="root" />
+    </bean>
+    <bean id="connFactory" class="com.baizhi.factorybean.ConnectionFactory" />
+    <bean id="conn" factory-bean="connFactory" factory-method="getConnection" />
+
+    <bean id="staticConn" class="com.baizhi.factorybean.StaticConnectionFactory" factory-method="getConnection" />
+    <bean id="account" class="com.baizhi.scope.Account" scope="prototype" />
 </beans>
