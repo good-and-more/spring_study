@@ -190,4 +190,14 @@ public class FactoryTest<test> {
         Product product = ctx.getBean("product", Product.class);
         ctx.close();
     }
+
+    /**
+     * 用于测试:自定义类型转换器
+     */
+    @Test
+    void test18() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContextConverter.xml");
+        com.baizhi.converter.Person person = ctx.getBean("person", com.baizhi.converter.Person.class);
+        System.out.println("person birthday = " + person.getBirthday());
+    }
 }
