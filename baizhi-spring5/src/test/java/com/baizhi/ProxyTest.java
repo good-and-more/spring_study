@@ -6,6 +6,8 @@ import com.baizhi.proxy.service.UserService;
 import com.baizhi.proxy.service.proxy.OrderServiceProxy;
 import com.baizhi.proxy.service.proxy.UserServiceProxy;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class ProxyTest {
 
@@ -21,5 +23,19 @@ public class ProxyTest {
 
         OrderService orderService = new OrderServiceProxy();
         orderService.showOrder();
+    }
+
+    /**
+     * 用于测试:动态代理
+     */
+    @Test
+    void test2() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContextProxy.xml");
+        UserService userService = ctx.getBean("userService", UserService.class);
+        userService.login("suns", "123456");
+        userService.register(new User());
+        //System.out.println("===========================");
+        //OrderService orderService = ctx.getBean("orderService", OrderService.class);
+        //orderService.showOrder();
     }
 }
