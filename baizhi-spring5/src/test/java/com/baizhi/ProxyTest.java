@@ -38,4 +38,15 @@ public class ProxyTest {
         //OrderService orderService = ctx.getBean("orderService", OrderService.class);
         //orderService.showOrder();
     }
+
+    /**
+     * 用于测试:基于注解的面向切面编程
+     */
+    @Test
+    void test3() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContextAspect.xml");
+        com.baizhi.aspect.UserService  userService = ctx.getBean("userService", com.baizhi.aspect.UserService .class);
+        //userService.login("suns", "123456");
+        userService.register(new User());
+    }
 }
